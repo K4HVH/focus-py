@@ -11,6 +11,7 @@ class Control:
     def drive_mouse(cls, weapon_data):
         max_instructions = len(weapon_data)
         complete = False
+        print(weapon_data)
 
         while not cls.terminate_flag:
             if win32api.GetKeyState(0x01) < 0 and win32api.GetKeyState(0x02) < 0 and win32api.GetKeyState(0x91) & 1 and complete == False:
