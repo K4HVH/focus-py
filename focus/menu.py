@@ -16,7 +16,7 @@ class Menu(QWidget):
         self.mouse_thread = None
 
         self.init_ui()
-        #self.on_weapon_changed(0)
+        self.on_weapon_changed(0)
  
     def init_ui(self):
         layout = QVBoxLayout()
