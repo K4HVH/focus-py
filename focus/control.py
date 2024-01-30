@@ -5,11 +5,14 @@ from mouse_driver.MouseMove import mouse_move
 from focus.utils import *
 
 class Control:
-    def drive_mouse(weapon_data):
+    terminate_flag = False
+
+    @classmethod
+    def drive_mouse(cls, weapon_data):
         max_instructions = len(weapon_data)
         complete = False
 
-        while True:
+        while not cls.terminate_flag:
             if win32api.GetKeyState(0x01) < 0 and win32api.GetKeyState(0x02) < 0 and win32api.GetKeyState(0x91) & 1 and complete == False:
                 for index, instruction in enumerate(weapon_data):
                     x, y, duration = instruction[0], instruction[1], instruction[2]
@@ -27,3 +30,7 @@ class Control:
                         complete = True
             elif win32api.GetKeyState(0x01) >= 0 or win32api.GetKeyState(0x02) >= 0 or win32api.GetKeyState(0x91) & 0:
                 complete = False
+
+    @classmethod
+    def stop_mouse(cls, var):
+        cls.terminate_flag = var

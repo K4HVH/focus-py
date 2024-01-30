@@ -1,4 +1,23 @@
 import time
+import json
+
+class WeaponData:
+    def __init__(self, json_file_path):
+        with open(json_file_path, 'r') as file:
+            self.weapon_data = json.load(file)
+
+        # Create a mapping between names and indices
+        self.name_to_index = {name: index for index, name in enumerate(self.weapon_data.keys())}
+
+    def get_data_by_name(self, name):
+        return self.weapon_data.get(name, None)
+
+    def get_data_by_position(self, position):
+        name_by_position = list(self.weapon_data.keys())[position - 1]
+        return self.weapon_data.get(name_by_position, None)
+
+    def get_weapon_name_by_position(self, position):
+        return list(self.weapon_data.keys())[position - 1]
 
 class Timer:
     def high_precision_sleep(duration):
