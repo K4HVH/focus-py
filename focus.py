@@ -5,8 +5,7 @@ from focus.menu import Menu
         
 def main():
 
-    weapons_path = 'weapons.json'
-    weapon_list = WeaponData(weapons_path)
+    weapon_list = WeaponData(Menu.weapons_path)
 
     app = QApplication([])
     menu = Menu(weapon_list)
